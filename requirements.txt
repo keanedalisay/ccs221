@@ -1,1 +1,5 @@
-streamlit numpy opencv-python-headless matplotlib tensorflow
+streamlit 
+numpy 
+opencv-python-headless 
+matplotlib 
+tensorflow
