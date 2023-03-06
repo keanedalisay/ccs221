@@ -25,11 +25,17 @@ class LineTemp:
     x_inc = float(dx / steps)
     y_inc = float(dy / steps)
 
+    x_data = []
+    y_data = []
+
     for i in range(steps):
-      ax.plot(strt_x, strt_y, color='blue', linestyle='solid')
+      x_data.append(strt_x)
+      y_data.append(strt_y)
 
       strt_x += x_inc
       strt_y += y_inc
+
+    ax.plot(x_data, y_data, color='blue', linestyle='solid')
 
     midpoint_x = (self.strt_pnt[0] + self.end_pnt[0]) / 2
     midpoint_y = (self.strt_pnt[1] + self.end_pnt[1]) / 2
@@ -52,10 +58,13 @@ class LineTemp:
     dy = self.end_pnt[1] - strt_y 
 
     decision = (2 * dy) - dx 
+
+    x_data = []
+    y_data = []
     
     while(strt_x <= self.end_pnt[0]):
-      ax.plot(strt_x, strt_y, color='red', linestyle='solid')
-
+      x_data.append(strt_x)
+      y_data.append(strt_y)
       strt_x += 1
 
       if decision < 0: 
@@ -63,9 +72,12 @@ class LineTemp:
       else:
         decision = decision + (2 * dy) - (2 * dx) 
         strt_y += 1 
+
+    ax.plot(x_data, y_data, color='red', linestyle='solid')
     
     midpoint_x = (self.strt_pnt[0] + self.end_pnt[0]) / 2
     midpoint_y = (self.strt_pnt[1] + self.end_pnt[1]) / 2
+
     ax.plot(midpoint_x, midpoint_y, color='green', marker='*')
 
     return fig  
@@ -85,15 +97,22 @@ class LineTemp:
 
     decision = (2 * dy) - dx 
 
+    x_data = []
+    y_data = []
+
     while(strt_x <= self.end_pnt[0]):
-      ax.plot(strt_x, strt_y, color='yellow', linestyle='solid')
+      x_data.append(strt_x)
+      y_data.append(strt_y)
       strt_x += 1
 
       if decision < 0: 
         decision = decision + (2 * dy) 
+      else:
         decision = decision + 2 * (dy - dx) 
         strt_y += 1 
     
+    
+    ax.plot(x_data, y_data, color='yellow', linestyle='solid')
 
     midpoint_x = (self.strt_pnt[0] + self.end_pnt[0]) / 2
     midpoint_y = (self.strt_pnt[1] + self.end_pnt[1]) / 2
