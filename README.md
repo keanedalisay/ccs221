@@ -27,3 +27,9 @@ Dive deep here: [Activity 3](pdfs/Activity_3_Group_1_BSCS_1B.pdf)
 Creating five 3D objects and transforming them through a universal class.
 
 Want more? Read through this: [Activity 4](pdfs/Activity_4_Group_1_BSCS_1B.pdf)
+
+## Quiz 1: Image Translation
+
+Simple image translation.
+
+Read more: [Quiz 1](pdfs/Quiz_1_Group_1_BSCS_1B.pdf)
