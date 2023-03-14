@@ -48,8 +48,8 @@ def shearOnZ(shX, shY, pos):
 
 
 def getShearAm(ax):
-    shear_am = float(st.number_input(
-        'Multiplier to ' + ax + ' for shearing?', value=0.00))
+    shear_am = st.number_input(
+        'Multiplier to ' + ax + ' for shearing?')
     return shear_am
 
 
@@ -67,9 +67,9 @@ class Transform():
 
     def translate(self):
         cols = st.columns(3)
-        x = float(cols[0].number_input("Inches to translate X?", value=0.00))
-        y = float(cols[1].number_input("Inches to translate Y?", value=0.00))
-        z = float(cols[2].number_input("Inches to translate Z?", value=0.00))
+        x = cols[0].number_input("Inches to translate X?")
+        y = cols[1].number_input("Inches to translate Y?")
+        z = cols[2].number_input("Inches to translate Z?")
 
         trans_am = tf.constant([x, y, z], dtype=tf.float64)  # to move object
         trans_obj = tf.add(self.points, trans_am)
@@ -79,8 +79,7 @@ class Transform():
         rot_ax = st.selectbox("Rotate object in which axis?", [
                               "X-Axis", "Y-Axis", "Z-Axis"])[0].lower()
 
-        theta = math.radians(
-            float(st.number_input("Angle to rotate object?", value=0.00)))
+        theta = math.radians(st.number_input("Angle to rotate object?"))
 
         for i in range(len(self.points)):
             pos = {'x': self.points[i][0],
@@ -101,9 +100,9 @@ class Transform():
     def scale(self):
 
         cols = st.columns(3)
-        x = float(cols[0].number_input("Multiplier to scale X?", value=0.00))
-        y = float(cols[1].number_input("Multiplier to scale Y?", value=0.00))
-        z = float(cols[2].number_input("Multiplier to scale Z?", value=0.00))
+        x = cols[0].number_input("Multiplier to scale X?")
+        y = cols[1].number_input("Multiplier to scale Y?")
+        z = cols[2].number_input("Multiplier to scale Z?")
 
         if x and y and z:
             scale_am = tf.constant([x, y, z], dtype=tf.float64)
@@ -112,7 +111,7 @@ class Transform():
 
     def shear(self):
         rot_ax = st.selectbox("Shear object in which axis?", [
-                              "X-Axis", "Y-Axis", "Z-Axis"])[0].lower()
+            "X-Axis", "Y-Axis", "Z-Axis"])[0].lower()
 
         shr_am_one = 0
         shr_am_two = 0
@@ -188,8 +187,8 @@ class Cube(Transform):
     def create(self):
         pre_val = 1.00
         if pre_val:
-            side_len = float(st.number_input(
-                "Area of cube in inches?", value=pre_val))
+            side_len = st.number_input(
+                "Area of cube in inches?", value=pre_val)
             self.size = side_len
             bottom_lower = np.array((0, 0, 0))
             points = np.vstack([
@@ -214,8 +213,8 @@ class Cuboid(Transform):
     def create(self):
         pre_val = 1.00
         if pre_val:
-            side_len = float(st.number_input(
-                "Area of cuboid in inches?", value=pre_val))
+            side_len = st.number_input(
+                "Area of cuboid in inches?", value=pre_val)
             self.size = side_len
             bottom_lower = np.array((0, 0, 0))
             points = np.vstack([
@@ -240,8 +239,8 @@ class Trapezoid(Transform):
     def create(self):
         pre_val = 1.00
         if pre_val:
-            side_len = float(st.number_input(
-                "Area of trapezoid in inches?", value=pre_val))
+            side_len = st.number_input(
+                "Area of trapezoid in inches?", value=pre_val)
             self.size = side_len
             bottom_lower = np.array((0, 0, 0))
             points = np.vstack([
@@ -266,8 +265,8 @@ class RightTri(Transform):
     def create(self):
         pre_val = 1.00
         if pre_val:
-            side_len = float(st.number_input(
-                "Area of right triangle in inches?", value=pre_val))
+            side_len = st.number_input(
+                "Area of right triangle in inches?", value=pre_val)
             self.size = side_len
             bottom_lower = np.array((0, 0, 0))
             points = np.vstack([
@@ -292,8 +291,8 @@ class SqPyramid(Transform):
     def create(self):
         pre_val = 1.00
         if pre_val:
-            side_len = float(st.number_input(
-                "Area of square pyramid in inches?", value=pre_val))
+            side_len = st.number_input(
+                "Area of square pyramid in inches?", value=pre_val)
             self.size = side_len
             bottom_lower = np.array((0, 0, 0))
             points = np.vstack([
